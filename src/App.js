@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import book from './book.svg';
 import './App.css';
-import { Navbar, Jumbotron, Button } from 'react-bootstrap';
+import Header from './Header';
+import AppInput from './form-components/app-input';
+import { Form, Jumbotron, Button } from 'react-bootstrap';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={book} className="App-logo" alt="logo" />
-          <h2>Welcome to allBooks</h2>
-        </div>
+        <Header />
+        <Form inline>
+          <AppInput inputLabel="Nombre" placeholder="Nombre"/>
+          <AppInput inputLabel="Autor" placeholder="Autor"/>
+          <AppInput inputLabel="Año" placeholder="Año"/>
+          <AppInput inputLabel="Descripción" placeholder="Descripción"/>
+        </Form>
         <p className="App-intro">
           To get started, ask help to rodri.
         </p>
