@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import book from './book.svg';
 import './App.css';
+import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
 class App extends Component {
   render() {
