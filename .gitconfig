@@ -1,0 +1,8 @@
+[user]
+	name = Carlos Sánchez Herrera
+	email = c.c.sanchez@gmail.com
+[color]
+	status = auto
+	branch = auto
+	diff = auto
+	interactive = auto
