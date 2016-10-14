@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import './Header.css';
+import './app-input.css';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 class AppInput extends Component {
@@ -10,7 +10,7 @@ class AppInput extends Component {
 
 	render() {
 	return (
-		<FormGroup controlId="formInlineName">
+		<FormGroup controlId="formInlineName" className="app-input">
 	  		<ControlLabel>{this.props.inputLabel}</ControlLabel>
 	  		<FormControl type="text" placeholder={this.props.placeholder} />
 		</FormGroup>
@@ -20,7 +20,7 @@ class AppInput extends Component {
 
 AppInput.propTypes = {
 	inputLabel: React.PropTypes.string,
-  placeholder: React.PropTypes.string
+  	placeholder: React.PropTypes.string
 };
 
 export default AppInput;
