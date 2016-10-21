@@ -22,7 +22,8 @@ class FormSearch extends Component {
 
        this.state = {
             name: '',
-            author: ''
+            author: '',
+            description: ''
        }
     }
 
@@ -34,7 +35,7 @@ class FormSearch extends Component {
                         Titulo
                     </Col>
                     <Col sm={10}>
-                        <FormControl type="titulo" placeholder="Titulo" onChange={this.onInputChange.bind(null, 'titulo')} />
+                        <FormControl type="title" placeholder="Titulo" onChange={this.onInputChange.bind(null, 'title')} />
                     </Col>
                 </FormGroup>
                 <FormGroup controlId="formHorizontalAuthor">
@@ -42,7 +43,7 @@ class FormSearch extends Component {
                         Autor
                     </Col>
                     <Col sm={10}>
-                        <FormControl type="autor" placeholder="autor" onChange={this.onInputChange.bind(null, 'autor')}/>
+                        <FormControl type="author" placeholder="Autor" onChange={this.onInputChange.bind(null, 'author')} />
                     </Col>
                 </FormGroup>
                 <FormGroup controlId="formHorizontalDescription">
@@ -50,7 +51,7 @@ class FormSearch extends Component {
                         Descripción
                     </Col>
                     <Col sm={10}>
-                        <FormControl type="descripcion" placeholder="Descripción" />
+                        <FormControl type="description" placeholder="Descripción" onChange={this.onInputChange.bind(null, 'description')} />
                     </Col>
                 </FormGroup>
                 <FormGroup controlId="formHorizontalYear">
@@ -58,7 +59,7 @@ class FormSearch extends Component {
                         Año
                     </Col>
                     <Col sm={10}>
-                        <FormControl type="año" placeholder="Año" />
+                        <FormControl type="year" placeholder="Año" onChange={this.onInputChange.bind(null, 'year')} />
                     </Col>
                 </FormGroup>
                 <ButtonToolbar>
@@ -85,8 +86,9 @@ class FormSearch extends Component {
         this.context.router.push({
             pathname: '/results',
             query: {
-                name: this.state.titulo,
-                author: this.state.autor
+                name: this.state.title,
+                author: this.state.author,
+                description: this.state.description
             },
         })
     }
