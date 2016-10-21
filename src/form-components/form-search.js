@@ -1,12 +1,30 @@
 import React, { Component } from 'react';
 import './form-search.css';
-import { Form, FormGroup, ControlLabel, FormControl, Col, Button, ButtonToolbar } from 'react-bootstrap';
+import {
+    Button,
+    ButtonToolbar,
+    Col,
+    ControlLabel,
+    Form,
+    FormControl,
+    FormGroup
+} from 'react-bootstrap';
 
 class FormSearch extends Component {
+    static contextTypes = {
+        router: React.PropTypes.object
+    }
 
-    //constructor (props) {
-      //  super(props);
-    //}
+    constructor (props) {
+       super(props);
+       this.onButtonClick = this.onButtonClick.bind(this);
+       this.onInputChange = this.onInputChange.bind(this);
+
+       this.state = {
+            name: '',
+            author: ''
+       }
+    }
 
     render() {
         return (
@@ -16,7 +34,7 @@ class FormSearch extends Component {
                         Titulo
                     </Col>
                     <Col sm={10}>
-                        <FormControl type="titulo" placeholder="Titulo" />
+                        <FormControl type="titulo" placeholder="Titulo" onChange={this.onInputChange.bind(null, 'titulo')} />
                     </Col>
                 </FormGroup>
                 <FormGroup controlId="formHorizontalAuthor">
@@ -24,7 +42,7 @@ class FormSearch extends Component {
                         Autor
                     </Col>
                     <Col sm={10}>
-                        <FormControl type="titulo" placeholder="Titulo" />
+                        <FormControl type="autor" placeholder="autor" onChange={this.onInputChange.bind(null, 'autor')}/>
                     </Col>
                 </FormGroup>
                 <FormGroup controlId="formHorizontalDescription">
@@ -44,12 +62,33 @@ class FormSearch extends Component {
                     </Col>
                 </FormGroup>
                 <ButtonToolbar>
-                    <Button type="submit">
-                        Buscar
-                    </Button>
+                    <Col smOffset={10}>
+                        <Button type="submit" onClick={this.onButtonClick}>
+                            Buscar
+                        </Button>
+                    </Col>
                 </ButtonToolbar>
             </Form>
         );
+    }
+
+    onInputChange(id, {target: {value}}) {
+        //event.target.value
+        this.setState({
+            [id]: value
+        })
+    }
+
+    onButtonClick(event) {
+        event.preventDefault();
+        //llamar a servicio
+        this.context.router.push({
+            pathname: '/results',
+            query: {
+                name: this.state.titulo,
+                author: this.state.autor
+            },
+        })
     }
 };
 
