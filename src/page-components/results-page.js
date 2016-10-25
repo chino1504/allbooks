@@ -55,9 +55,9 @@ class ResultsPage extends Component {
         const {location: {query}} = this.props;
 
         return (
-        	<div className="App">
+        	<div>
                 <Header />
-	        	<BootstrapTable data={books} striped={true} hover={true}>
+	        	<BootstrapTable data={books} striped={true} hover={true} tableBodyClass="results-table">
                     <TableHeaderColumn dataField="id" isKey={true}>Book ID</TableHeaderColumn>
                     <TableHeaderColumn dataField="name" filter={{ type: 'TextFilter', defaultValue: query.name }}>Título</TableHeaderColumn>
                     <TableHeaderColumn dataField="author" filter={{ type: 'TextFilter', defaultValue: query.author }}>Autor</TableHeaderColumn>

@@ -5,11 +5,13 @@ import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ResultsPage from './page-components/results-page';
+import FormSearch from './form-components/form-search';
 import { Router, Route, browserHistory } from 'react-router'
 
 ReactDOM.render((
     <Router history={browserHistory}>
         <Route path="/" component={App}/>
         <Route path="/results" component={ResultsPage}/>
+        <Route path="/search" component={FormSearch}/>
     </Router>
 ), document.getElementById('root'))

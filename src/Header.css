@@ -1,16 +1,17 @@
 .header {
-  background-color: #3D62BA;
-  height: 150px;
-  padding: 20px;
-  color: white;
+    background-color: #3D62BA;
+    height: 150px;
+    padding: 20px;
+    color: white;
+    text-align: center;
 }
 
 .header-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 44px;
-}
+    animation: App-logo-spin infinite 20s linear;
+    height: 44px;
+    }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
