@@ -27,10 +27,31 @@ class FormLogin extends Component {
     constructor (props) {
        super(props);
        this.onButtonClick = this.onButtonClick.bind(this);
+       this.onInputChange = this.onInputChange.bind(this);
        this.navigateToSearch = this.navigateToSearch.bind(this);
+
+       this.state = {
+            errorCode: '',
+            errorMessage: ''
+       }
+    }
+
+    componentWillMount () {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                // User is signed in.
+                this.navigateToSearch()
+            }
+        });
     }
 
 	render() {
+        var errorComponent = null;
+
+        if (this.state.errorCode) {
+            errorComponent = this.state.errorMessage
+        }
+
         return (
             <Form horizontal>
                 <FormGroup>
@@ -38,7 +59,7 @@ class FormLogin extends Component {
                         Usuario
                     </Col>
                     <Col sm={10}>
-                        <FormControl type="user" placeholder="Email" />
+                        <FormControl type="user" placeholder="Email" onChange={this.onInputChange.bind(null, 'user')}/>
                     </Col>
                 </FormGroup>
                 <FormGroup>
@@ -46,7 +67,7 @@ class FormLogin extends Component {
                         Contraseña
                     </Col>
                     <Col sm={10}>
-                        <FormControl type="password" placeholder="Contraseña" />
+                        <FormControl type="password" placeholder="Contraseña" onChange={this.onInputChange.bind(null, 'password')}/>
                     </Col>
                 </FormGroup>
                 <ButtonToolbar>
@@ -56,8 +77,17 @@ class FormLogin extends Component {
                         </Button>
                     </Col>
                 </ButtonToolbar>
+                {errorComponent}
             </Form>
         );
+    }
+
+    onInputChange (id, {target: {value}}) {
+        //event.target.value
+        this.setState({
+            [id]: value
+        })
+        console.log(this.state);
     }
 
     onButtonClick (event) {
@@ -68,7 +98,7 @@ class FormLogin extends Component {
                 this.navigateToSearch()
             } else {
                 // No user is signed in.
-                firebase.auth().signInWithEmailAndPassword('c.c.sanchez@gmail.com', 'asd124')
+                firebase.auth().signInWithEmailAndPassword(this.state.user, this.state.password)
                 .then((response)  => {
                     this.navigateToSearch()
                 })
@@ -77,8 +107,11 @@ class FormLogin extends Component {
                     var errorCode = error.code;
                     var errorMessage = error.message;
                     // ...
-                    });
-                console.log('no logeado');
+                    this.setState({
+                        errorCode: errorCode,
+                        errorMessage: errorMessage
+                    })
+                });
             }
         });
     }
