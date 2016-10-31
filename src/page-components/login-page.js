@@ -10,14 +10,14 @@ import {
 } from 'react-bootstrap';
 import firebase from 'firebase';
 
-var config = {
+/*var config = {
     apiKey: "AIzaSyCAjldpMucRCU8prGFnByMXFZ7pNzV31k8",
     authDomain: "allbooks-2b844.firebaseapp.com",
     databaseURL: "https://allbooks-2b844.firebaseio.com",
     storageBucket: "allbooks-2b844.appspot.com",
     messagingSenderId: "1067582285200"
 };
-firebase.initializeApp(config);
+firebase.initializeApp(config);*/
 
 class FormLogin extends Component {
     static contextTypes = {
@@ -87,7 +87,6 @@ class FormLogin extends Component {
         this.setState({
             [id]: value
         })
-        console.log(this.state);
     }
 
     onButtonClick (event) {
